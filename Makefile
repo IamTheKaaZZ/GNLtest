@@ -6,7 +6,7 @@
 #    By: bcosters <bcosters@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/08 10:32:48 by bcosters          #+#    #+#              #
-#    Updated: 2021/03/14 14:14:27 by bcosters         ###   ########.fr        #
+#    Updated: 2021/03/14 14:16:48 by bcosters         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,7 +102,7 @@ debugs:
 #	MANDATORY
 m:	debugs m1
 
-m1:			$(OBJTEST) $(HEADER) $(LIB)
+m1:			$(OBJTEST) $(OBJS) $(HEADER) $(LIB)
 			@echo [BUFFER_SIZE = 1]
 			@$(CC) $(DEFFLAG) $(BUFF1) $(CFLAGS) $(OBJS) $(OBJTEST) $(LIB) -o $(NAME1)
 			@echo [TEST 1]
