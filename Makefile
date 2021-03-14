@@ -6,7 +6,7 @@
 #    By: bcosters <bcosters@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/08 10:32:48 by bcosters          #+#    #+#              #
-#    Updated: 2021/03/14 13:40:05 by bcosters         ###   ########.fr        #
+#    Updated: 2021/03/14 14:02:31 by bcosters         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@
 
 #	Project sources/objects/headers
 
-TEST	= test_gnl.c
-OBJTEST	= $(TEST:%.c=%.o)
+TEST	= tests/test_gnl.c
+OBJTEST	= $(TEST:tests/%.c=tests/%.o)
 
 SRCS	= ../../get_next_line.c ../../get_next_line_utils.c
 OBJS	= $(SRCS:../../%.c=../../%.o)
@@ -71,7 +71,7 @@ YESNO	= shell_scripts/yesno.sh
 #	Implicit rules
 
 %.o : %.c
-			$(CC) -c $(CFLAGS) $< -o $@
+			@$(CC) -c $(CFLAGS) $< -o $@
 
 #	Normal rules
 
@@ -83,15 +83,21 @@ start:
 			@echo The builtin tester checks for memory leaks.
 			@echo Do you want to start the fun?
 			@bash $(YESNO)
+			@echo
 
 #Import debugs
 debugs:
 			@bash $(IMPORT)
+			@echo
+
+#Test
+#test_gnl.o:	$(TEST)
+#			@$(CC) -c $(CFLAGS) $(LIB) $< -o $@
 
 #	MANDATORY
 m:	debugs m1
 
-m1:			$(OBJS) $(OBJTEST) $(HEADER) $(LIB)
+m1:			$(OBJTEST) $(HEADER) $(LIB)
 			@echo [BUFFER_SIZE = 1]
 			@$(CC) $(CFLAGS) $(BUFF1) $(OBJS) $(OBJTEST) $(LIB) -o $(NAME1)
 			@echo [TEST 1]
