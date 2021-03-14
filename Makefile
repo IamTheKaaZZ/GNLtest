@@ -6,7 +6,7 @@
 #    By: bcosters <bcosters@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/08 10:32:48 by bcosters          #+#    #+#              #
-#    Updated: 2021/03/14 14:02:31 by bcosters         ###   ########.fr        #
+#    Updated: 2021/03/14 14:06:29 by bcosters         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,13 +19,13 @@
 TEST	= tests/test_gnl.c
 OBJTEST	= $(TEST:tests/%.c=tests/%.o)
 
-SRCS	= ../../get_next_line.c ../../get_next_line_utils.c
-OBJS	= $(SRCS:../../%.c=../../%.o)
-HEAD	= simple_debugs.h ../../get_next_line.h
+SRCS	= ../get_next_line.c ../get_next_line_utils.c
+OBJS	= $(SRCS:../%.c=../%.o)
+HEAD	= simple_debugs.h ../get_next_line.h
 
-SRCS_BONUS	= ../../get_next_line_bonus.c ../../get_next_line_utils_bonus.c
-OBJS_BONUS	= $(SRCS_BONUS:../../%.c=../../%.o)
-HEAD_BONUS	= simple_debugs.h ../../get_next_line_bonus.h
+SRCS_BONUS	= ../get_next_line_bonus.c ../get_next_line_utils_bonus.c
+OBJS_BONUS	= $(SRCS_BONUS:../%.c=../%.o)
+HEAD_BONUS	= simple_debugs.h ../get_next_line_bonus.h
 
 LIB		= debugs.a
 LIBHEAD	= simple_debugs.h
@@ -99,7 +99,7 @@ m:	debugs m1
 
 m1:			$(OBJTEST) $(HEADER) $(LIB)
 			@echo [BUFFER_SIZE = 1]
-			@$(CC) $(CFLAGS) $(BUFF1) $(OBJS) $(OBJTEST) $(LIB) -o $(NAME1)
+			@$(CC) $(BUFF1) $(CFLAGS) $(OBJS) $(OBJTEST) $(LIB) -o $(NAME1)
 			@echo [TEST 1]
 			@./$(NAME1) < test1.txt
 			@rm $(NAME1)
