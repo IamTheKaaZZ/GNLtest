@@ -6,7 +6,7 @@
 #    By: bcosters <bcosters@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/08 10:32:48 by bcosters          #+#    #+#              #
-#    Updated: 2021/03/14 14:06:29 by bcosters         ###   ########.fr        #
+#    Updated: 2021/03/14 14:14:27 by bcosters         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,17 +47,19 @@ CC		= gcc
 
 CFLAGS 	= -Wall -Wextra -Werror
 
-DEFFLAG	= -D BUFFER_SIZE=
+DEFFLAG	= -D
 
-BUFF1	= $(addsuffix 1, $(DEFFLAG))
-BUFF2	= $(addsuffix 2, $(DEFFLAG))
-BUFF5	= $(addsuffix 5, $(DEFFLAG))
-BUFF32	= $(addsuffix 32, $(DEFFLAG))
-BUFF42	= $(addsuffix 42, $(DEFFLAG))
-BUFF256	= $(addsuffix 256, $(DEFFLAG))
-BUFF1K	= $(addsuffix 1000, $(DEFFLAG))
-BUFF9K	= $(addsuffix 9001, $(DEFFLAG))
-BUFF1M	= $(addsuffix 1000000, $(DEFFLAG))
+BUFF	= BUFFER_SIZE=
+
+BUFF1	= $(addsuffix 1, $(BUFF))
+BUFF2	= $(addsuffix 2, $(BUFF))
+BUFF5	= $(addsuffix 5, $(BUFF))
+BUFF32	= $(addsuffix 32, $(BUFF))
+BUFF42	= $(addsuffix 42, $(BUFF))
+BUFF256	= $(addsuffix 256, $(BUFF))
+BUFF1K	= $(addsuffix 1000, $(BUFF))
+BUFF9K	= $(addsuffix 9001, $(BUFF))
+BUFF1M	= $(addsuffix 1000000, $(BUFF))
 
 # Shell scripts
 
@@ -71,6 +73,9 @@ YESNO	= shell_scripts/yesno.sh
 #	Implicit rules
 
 %.o : %.c
+			@$(CC) -c $(CFLAGS) $< -o $@
+
+../%.o : ../%.c
 			@$(CC) -c $(CFLAGS) $< -o $@
 
 #	Normal rules
@@ -99,7 +104,7 @@ m:	debugs m1
 
 m1:			$(OBJTEST) $(HEADER) $(LIB)
 			@echo [BUFFER_SIZE = 1]
-			@$(CC) $(BUFF1) $(CFLAGS) $(OBJS) $(OBJTEST) $(LIB) -o $(NAME1)
+			@$(CC) $(DEFFLAG) $(BUFF1) $(CFLAGS) $(OBJS) $(OBJTEST) $(LIB) -o $(NAME1)
 			@echo [TEST 1]
 			@./$(NAME1) < test1.txt
 			@rm $(NAME1)
