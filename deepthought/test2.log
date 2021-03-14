@@ -1,0 +1,9 @@
+
+File: tests/test2.txt
+(LINE 1) [RET 1] ||
+(LINE 2) [RET 1] ||
+(LINE 3) [RET 1] ||
+(LINE 4) [RET 1] ||
+(LINE 5) [RET 1] ||
+(LINE 6) [RET 0] ||
+EOF reached!
