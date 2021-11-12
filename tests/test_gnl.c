@@ -6,7 +6,7 @@
 /*   By: bcosters <bcosters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 12:16:57 by bcosters          #+#    #+#             */
-/*   Updated: 2021/03/14 11:54:56 by bcosters         ###   ########.fr       */
+/*   Updated: 2021/11/12 10:53:02 by bcosters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,14 @@
 #include "../../get_next_line.h"
 #include "../simple_debugs.h"
 
-void	doprint(int out, char **str, int line)
+void	doprint(char **str, int line)
 {
-	printf("(LINE %i) [RET %i] |%s|\n", line, out, *str);
+	printf("(LINE %i) %s\n", line, *str);
 }
 
 void	testfile(char *filename)
 {
 	int 	fd;
-	int		retval;
 	int		linecount;
 	char	*line = NULL;
 
@@ -39,21 +38,15 @@ void	testfile(char *filename)
 	else
 	{
 		printf("\nFile: %s\n", filename);
-		retval = 1;
-		while (retval == 1)
+		while ((line = get_next_line(fd)) != NULL)
 		{
-			retval = get_next_line(fd, &line);
-			doprint(retval, &line, linecount++);
+			doprint(&line, linecount++);
 			if (line)
 			{
 				free(line);
 				line = NULL;
 			}
 		}
-		if (retval == 0)
-			printf("EOF reached!\n");
-		if (retval < 0 )
-			printf("An error occured!\n");
 	}
 	close(fd);
 }
@@ -64,13 +57,6 @@ int main(int argc, char **argv)
 {
 	if (argc == 2)
 		testfile(argv[1]);
-	//testfile("test2.txt");
-	//testfile("test3.txt");
-	//testfile("test4.txt");
-	//testfile("test5.txt");
-	//testfile("test6.txt");
-	//testfile("test8.txt");
-	//testfile("test7.txt");
 	check_leaks();
 	return 0;
 }

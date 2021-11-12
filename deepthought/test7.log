@@ -1,5 +1,4 @@
 
 File: tests/test7.txt
-(LINE 1) [RET 1] |Hello there general kenobi|
-(LINE 2) [RET 0] |L|
-EOF reached!
+(LINE 1) Hello there general kenobi
+(LINE 2) L

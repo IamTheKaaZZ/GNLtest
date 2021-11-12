@@ -4,7 +4,7 @@ Version 2: Electric Boogaloo
 
 ## Introduction
 
-Welcome to my tester for the GNL project for 42
+Welcome to my tester for the GNL project for 42 (Updated for the new subject)
 
 ## How to use:
 
@@ -13,7 +13,7 @@ Welcome to my tester for the GNL project for 42
 
 ## Helpful utilities
 
-- My side project > [simple_debugs](https://github.com/m4r11/simple_debug)
+- My side project > [42_memleak_check](https://github.com/IamTheKaaZZ/42_memleak_check)
 - Tripouille's tester > [gnlTester](https://github.com/Tripouille/gnlTester)
 - mrjvs's tester > [42cursus_gnl_tests](https://github.com/mrjvs/42cursus_gnl_tests)
 
